@@ -22,6 +22,9 @@ namespace ConsoleCalc
 
             //загружаем сторонние библиотеки
             var extensionsDir = Path.Combine(Environment.CurrentDirectory, "Extensions");
+            if (!Directory.Exists(extensionsDir))
+                return;
+
             var files = Directory.GetFiles(extensionsDir, "*.dll");
             foreach (var file in files)
             {
