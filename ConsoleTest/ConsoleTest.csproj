@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleCalc\ConsoleCalc.csproj">
-      <Project>{1AC91EB3-A93B-4496-BC22-E6B65E535A5D}</Project>
-      <Name>ConsoleCalc</Name>
+    <ProjectReference Include="..\ITUniver.Calc.Core\ITUniver.Calc.Core.csproj">
+      <Project>{ef18a293-4f2c-49fb-8eb8-3a667bb615dd}</Project>
+      <Name>ITUniver.Calc.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
