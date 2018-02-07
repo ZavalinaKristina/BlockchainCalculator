@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.IO;
 
 namespace ConsoleCalc
 {
@@ -16,13 +17,26 @@ namespace ConsoleCalc
         public Calc()
         {
             operations = new List<IOperation>();
-            var assembly = Assembly.GetExecutingAssembly();
+            //загружаем текущие
+            LoadOperation(Assembly.GetExecutingAssembly());
+
+            //загружаем сторонние библиотеки
+            var extensionsDir = Path.Combine(Environment.CurrentDirectory, "Extensions");
+            var files = Directory.GetFiles(extensionsDir, "*.dll");
+            foreach (var file in files)
+            {
+                LoadOperation(Assembly.LoadFile(files.FirstOrDefault()));
+            }
+        }
+
+        private void LoadOperation(Assembly assembly)
+        {
             var types = assembly.GetTypes();
-            foreach (var item in types)
+            var typeOperation = typeof(IOperation);
+            foreach (var item in types.Where(t => !t.IsAbstract && !t.IsInterface))
             {
                 var interfaces = item.GetInterfaces();
-                var isOperation = interfaces.Any(
-                    it => it == typeof(IOperation));
+                var isOperation = interfaces.Any(it => it == typeOperation);
 
                 if (isOperation)
                 {
@@ -39,7 +53,6 @@ namespace ConsoleCalc
                 }
             }
         }
-
         /// <summary>
         /// Получить список имен операций
         /// </summary>
