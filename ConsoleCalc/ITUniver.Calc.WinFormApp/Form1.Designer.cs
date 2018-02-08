@@ -31,7 +31,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbOperation = new System.Windows.Forms.ComboBox();
             this.btnCalc = new System.Windows.Forms.Button();
-            this.btnReset = new System.Windows.Forms.Button();
             this.btnLuck = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbInput = new System.Windows.Forms.MaskedTextBox();
@@ -70,32 +69,20 @@
             // 
             this.btnCalc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCalc.Enabled = false;
-            this.btnCalc.Location = new System.Drawing.Point(228, 10);
+            this.btnCalc.Location = new System.Drawing.Point(196, 12);
             this.btnCalc.Name = "btnCalc";
-            this.btnCalc.Size = new System.Drawing.Size(83, 38);
+            this.btnCalc.Size = new System.Drawing.Size(115, 65);
             this.btnCalc.TabIndex = 3;
             this.btnCalc.Text = "Вычислить";
             this.btnCalc.UseVisualStyleBackColor = true;
             this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
             // 
-            // btnReset
-            // 
-            this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReset.Enabled = false;
-            this.btnReset.Location = new System.Drawing.Point(139, 10);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(80, 38);
-            this.btnReset.TabIndex = 4;
-            this.btnReset.Text = "Очистить";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
             // btnLuck
             // 
             this.btnLuck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnLuck.Location = new System.Drawing.Point(10, 9);
+            this.btnLuck.Location = new System.Drawing.Point(10, 12);
             this.btnLuck.Name = "btnLuck";
-            this.btnLuck.Size = new System.Drawing.Size(82, 38);
+            this.btnLuck.Size = new System.Drawing.Size(109, 64);
             this.btnLuck.TabIndex = 5;
             this.btnLuck.Text = "Мне повезет";
             this.btnLuck.UseVisualStyleBackColor = true;
@@ -117,7 +104,6 @@
             // 
             this.tbInput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbInput.Location = new System.Drawing.Point(10, 23);
-            this.tbInput.Mask = "#####################################";
             this.tbInput.Name = "tbInput";
             this.tbInput.PromptChar = ' ';
             this.tbInput.ReadOnly = true;
@@ -125,6 +111,8 @@
             this.tbInput.Size = new System.Drawing.Size(301, 20);
             this.tbInput.TabIndex = 1;
             this.tbInput.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.tbInput.Click += new System.EventHandler(this.tbInput_Click);
+            this.tbInput.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbInput_KeyUp);
             this.tbInput.Leave += new System.EventHandler(this.tbInput_Leave);
             // 
             // groupBox3
@@ -153,11 +141,10 @@
             // 
             this.panel1.Controls.Add(this.btnLuck);
             this.panel1.Controls.Add(this.btnCalc);
-            this.panel1.Controls.Add(this.btnReset);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 236);
+            this.panel1.Location = new System.Drawing.Point(0, 207);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(321, 60);
+            this.panel1.Size = new System.Drawing.Size(321, 89);
             this.panel1.TabIndex = 8;
             // 
             // Form1
@@ -188,7 +175,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cbOperation;
         private System.Windows.Forms.Button btnCalc;
-        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnLuck;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.MaskedTextBox tbInput;

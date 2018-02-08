@@ -64,6 +64,11 @@ namespace ConsoleCalc
         {
             return operations.Select(o => o.Name).ToArray();
         }
+
+        public object GetOpers()
+        {
+            return operations;
+        }
         public double Exec(string oper, double[] args)
         {
             //найти операцию в списке 

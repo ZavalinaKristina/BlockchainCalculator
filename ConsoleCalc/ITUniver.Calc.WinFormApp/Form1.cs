@@ -8,22 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ConsoleCalc;
+using ITUniver.Calc.Core.Interface;
 
 namespace ITUniver.Calc.WinFormApp
 {
     public partial class Form1 : Form
     {
         private ConsoleCalc.Calc calc { get; set; }
+        private IOperation lastOperation { get; set; }
         public Form1()
         {
             InitializeComponent();
 
             #region Загрузка операций
             calc = new ConsoleCalc.Calc();
-            var operations = calc.GetOperNames();
-            cbOperation.Items.Clear();
+           // var operations = calc.GetOperNames();
+           // cbOperation.Items.Clear();
             //cbOperation.Items.AddRange(operations);
-            cbOperation.DataSource = operations;
+            cbOperation.DataSource = calc.GetOpers();
+            cbOperation.DisplayMember = "Name";
             #endregion
         }
 
@@ -35,8 +38,11 @@ namespace ITUniver.Calc.WinFormApp
 
         private void btnCalc_Click(object sender, EventArgs e)
         {
+            tbInput.Focus();
+            tbInput_Click(sender, e);
             //получить операцию
-            var oper = $"{cbOperation.SelectedItem}";
+            if (lastOperation == null)
+                return;
 
             //получить данные
             var args = tbInput.Text
@@ -46,26 +52,33 @@ namespace ITUniver.Calc.WinFormApp
                 .ToArray();
 
             //вычислить результат
-            var result = calc.Exec(oper, args);
+            var result = lastOperation.Exec(args);
             //показать результат
             tbResult.Text = $"{result}";
         }
 
         private void cbOperation_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lastOperation = cbOperation.SelectedItem as IOperation;
             tbInput.ReadOnly = false;
         }
 
         private void tbInput_Leave(object sender, EventArgs e)
         {
             btnCalc.Enabled = true;
-            btnReset.Enabled = true;
         }
 
-        private void btnReset_Click(object sender, EventArgs e)
+        private void tbInput_Click(object sender, EventArgs e)
         {
-            tbInput.Clear();
-            tbResult.Clear();
+            tbInput.SelectAll();
+        }
+
+        private void tbInput_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                btnCalc_Click(sender, e);
+            }
         }
     }
 }
