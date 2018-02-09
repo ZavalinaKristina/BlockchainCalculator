@@ -35,6 +35,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbInput = new System.Windows.Forms.MaskedTextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lbHistory = new System.Windows.Forms.ListBox();
             this.tbResult = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2.SuspendLayout();
@@ -68,7 +69,6 @@
             // btnCalc
             // 
             this.btnCalc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCalc.Enabled = false;
             this.btnCalc.Location = new System.Drawing.Point(196, 12);
             this.btnCalc.Name = "btnCalc";
             this.btnCalc.Size = new System.Drawing.Size(115, 65);
@@ -106,17 +106,17 @@
             this.tbInput.Location = new System.Drawing.Point(10, 23);
             this.tbInput.Name = "tbInput";
             this.tbInput.PromptChar = ' ';
-            this.tbInput.ReadOnly = true;
             this.tbInput.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tbInput.Size = new System.Drawing.Size(301, 20);
             this.tbInput.TabIndex = 1;
             this.tbInput.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.tbInput.Click += new System.EventHandler(this.tbInput_Click);
+            this.tbInput.TextChanged += new System.EventHandler(this.tbInput_TextChanged);
             this.tbInput.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbInput_KeyUp);
-            this.tbInput.Leave += new System.EventHandler(this.tbInput_Leave);
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.lbHistory);
             this.groupBox3.Controls.Add(this.tbResult);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(0, 108);
@@ -127,10 +127,19 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Результат";
             // 
+            // lbHistory
+            // 
+            this.lbHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbHistory.FormattingEnabled = true;
+            this.lbHistory.Location = new System.Drawing.Point(10, 43);
+            this.lbHistory.Name = "lbHistory";
+            this.lbHistory.Size = new System.Drawing.Size(301, 135);
+            this.lbHistory.TabIndex = 1;
+            // 
             // tbResult
             // 
             this.tbResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbResult.Dock = System.Windows.Forms.DockStyle.Top;
             this.tbResult.Location = new System.Drawing.Point(10, 23);
             this.tbResult.Name = "tbResult";
             this.tbResult.ReadOnly = true;
@@ -181,6 +190,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox tbResult;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ListBox lbHistory;
     }
 }
 
