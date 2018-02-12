@@ -7,17 +7,14 @@ using System.Threading.Tasks;
 
 namespace ITUniver.Calc.Core.Operations
 {
-    public class SumOperation : IOperation
+    public class SumOperation : SuperOperation
     {
-        public int argCount
-        {
-            get { return 2; }
+          public override string Description => "Арифметическое действие, посредством которого из двух или нескольких чисел получают новое, содержащее столько единиц, сколько было во всех данных числах вместе.";
+       
+        public override string Name => "sum";
 
-        }
 
-        public string Name => "sum";
-
-        public double Exec(double[] args)
+        public override double Exec(double[] args)
         {
             return args.Sum();
         }

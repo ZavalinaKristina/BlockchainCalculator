@@ -27,7 +27,7 @@ namespace ITUniver.Calc.DB.Repositories
 
         public IEnumerable<IHistoryItem> GetAll()
         {
-            return items;
+            return null;
         }
 
     }

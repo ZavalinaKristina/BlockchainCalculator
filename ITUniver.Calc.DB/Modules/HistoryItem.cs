@@ -9,7 +9,7 @@ namespace ITUniver.Calc.DB.Modules
     public class HistoryItem : IHistoryItem
     {
         public long Id { get; set; }
-        public string Operation { get; set; }
+        public long Operation { get; set; }
         public string Args { get; set; }
         public double? Result { get; set; }
         public DateTime ExecDate { get; set; }

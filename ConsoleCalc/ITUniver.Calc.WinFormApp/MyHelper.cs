@@ -10,31 +10,33 @@ namespace ITUniver.Calc.WinFormApp
 {
     public static class MyHelper
     {
-        private static IHistoryRepository History = new MemoryRepository();
-        private static IList<IHistoryItem> items = new List<IHistoryItem>();
+        private static IBaseRepository<HistoryItem> History = new BaseRepository<HistoryItem>("History");
+        // private static IList<IHistoryItem> items = new List<IHistoryItem>();
 
         public static void AddToHistory(string oper, double[] args, double result)
         {
             var item = new HistoryItem();
             item.Args = string.Join(" ", args);
-            item.Operation = oper;
+            item.Operation = 1;//oper
             item.Result = result;
             item.ExecDate = DateTime.Now;
 
             History.Save(item);
         }
 
-        public static string GetAll()
+        public static string[] GetAll()
         {
-            string s = "";
-            var histr = History.GetAll();
-            foreach (var item in histr)
+            //sum(1,3,4) = 8/ 01.08.2018
+            if (History == null)
             {
-                s += item.Result + " "; //не знаю, в каком виде должно быть. Пусть пока так.
+                return History.GetAll()
+                     .Select(hi => $"{hi.Operation}({hi.Args}) = {hi.Result}/ {hi.ExecDate}")
+                     .ToArray();
             }
-
-
-            return s;
+            else
+            {
+                return null;
+            }
         }
     }
 }

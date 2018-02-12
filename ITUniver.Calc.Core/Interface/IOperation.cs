@@ -14,4 +14,33 @@ namespace ITUniver.Calc.Core.Interface
         double Exec(double[] args);
     }
 
+    public interface ISuperOperation : IOperation
+    {
+        string Owner { get; }
+        string Description { get; }
+    }
+
+    public abstract class SuperOperation : ISuperOperation
+    {
+        public virtual int argCount => 2;
+
+
+        public virtual string Description => "";
+       
+        public virtual string Name => "noname";
+
+        public virtual string Owner => "ITUniverCompany";
+
+
+        public abstract double Exec(double[] args);
+      
+        public string OwnerName
+        {
+            get {
+                return $"{Owner} / {Name}";
+                    }
+        }
+    }
+
+
 }

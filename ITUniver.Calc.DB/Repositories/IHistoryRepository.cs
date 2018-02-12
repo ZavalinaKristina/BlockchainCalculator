@@ -8,16 +8,12 @@ using System.Threading.Tasks;
 namespace ITUniver.Calc.DB.Repositories
 {
 
-    public interface IHistoryRepository
+    public interface IHistoryRepository : IBaseRepository<IHistoryItem>
     {
-        IHistoryItem Find(long id);
+       // IHistoryItem GetByOperation(long Id);
+     }
 
-        void Save(IHistoryItem item);
-
-        void Delete(long id);
-
-        IEnumerable<IHistoryItem> GetAll();
-
-
+    public interface IOperationRepository : IBaseRepository<Operation>
+    {
     }
 }

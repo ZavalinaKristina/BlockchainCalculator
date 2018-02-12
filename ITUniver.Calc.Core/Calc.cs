@@ -28,7 +28,7 @@ namespace ConsoleCalc
             var files = Directory.GetFiles(extensionsDir, "*.dll");
             foreach (var file in files)
             {
-                LoadOperation(Assembly.LoadFile(files.FirstOrDefault()));
+                LoadOperation(Assembly.LoadFile(file));
             }
         }
 
@@ -65,10 +65,12 @@ namespace ConsoleCalc
             return operations.Select(o => o.Name).ToArray();
         }
 
-        public object GetOpers()
+        [Obsolete("Будет удалено в следующей версии")]
+        public IOperation[] GetOpers()
         {
-            return operations;
+            return operations.ToArray();
         }
+
         public double Exec(string oper, double[] args)
         {
             //найти операцию в списке 
