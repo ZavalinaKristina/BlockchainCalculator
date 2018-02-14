@@ -27,7 +27,7 @@ namespace ITUniver.Calc.WinFormApp
         public static string[] GetAll()
         {
             //sum(1,3,4) = 8/ 01.08.2018
-            if (History == null)
+            if (History != null)
             {
                 return History.GetAll()
                      .Select(hi => $"{hi.Operation}({hi.Args}) = {hi.Result}/ {hi.ExecDate}")

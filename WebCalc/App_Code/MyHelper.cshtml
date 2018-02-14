@@ -1,0 +1,15 @@
+﻿@helper Button(string name)
+{
+
+    <b class="btn btn-success">
+        @(name.ToUpper())
+    </b>
+}
+
+@helper Submit(string name)
+{
+
+    <input type="submit" class="btn btn-success" value ="@(name.ToUpper())"/>
+    
+}
+

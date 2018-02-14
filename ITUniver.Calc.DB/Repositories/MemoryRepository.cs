@@ -30,5 +30,19 @@ namespace ITUniver.Calc.DB.Repositories
             return null;
         }
 
+        HistoryItem IBaseRepository<HistoryItem>.Find(long id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Save(HistoryItem item)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<HistoryItem> IBaseRepository<HistoryItem>.GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

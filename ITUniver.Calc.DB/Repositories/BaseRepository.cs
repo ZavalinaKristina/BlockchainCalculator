@@ -38,7 +38,7 @@ namespace ITUniver.Calc.DB.Repositories
 
         public IEnumerable<T> GetAll()
         {
-            return null;
+            return ReadData();
         }
 
         public void Save(T item)
@@ -126,7 +126,7 @@ namespace ITUniver.Calc.DB.Repositories
             foreach (var prop in props)
             {
                 // var value = record[prop.Name];
-                var ind = record.GetOrdinal("Result");
+                var ind = record.GetOrdinal(prop.Name);
                 var isnull = record.IsDBNull(ind);
                 if (!isnull)
                 {

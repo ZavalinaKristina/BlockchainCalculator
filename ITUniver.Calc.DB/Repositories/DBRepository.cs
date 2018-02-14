@@ -29,6 +29,11 @@ namespace ITUniver.Calc.DB.Repositories
             return ReadData();
         }
 
+        public void Save(HistoryItem item)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Save(IHistoryItem item)
         {
             var doubleresult = item.Result.HasValue
@@ -48,6 +53,16 @@ namespace ITUniver.Calc.DB.Repositories
                 var count = command.ExecuteNonQuery();
             }
 
+        }
+
+        HistoryItem IBaseRepository<HistoryItem>.Find(long id)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<HistoryItem> IBaseRepository<HistoryItem>.GetAll()
+        {
+            throw new NotImplementedException();
         }
 
         #region

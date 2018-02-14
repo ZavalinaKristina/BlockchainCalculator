@@ -26,7 +26,7 @@ namespace ITUniver.Calc.WinFormApp
             #region Загрузка операций
             calc = new ConsoleCalc.Calc();
             cbOperation.Items.Clear();
-            var operations = calc.GetOpers();
+            var operations = calc.GetOperNames();
             cbOperation.DataSource = operations;
             /*  var superOperation = operations.OfType<SuperOperation>(); //.Where(o => o is SuperOperation);
 

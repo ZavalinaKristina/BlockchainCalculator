@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace ITUniver.Calc.DB.Repositories
 {
 
-    public interface IHistoryRepository : IBaseRepository<IHistoryItem>
+    public interface IHistoryRepository : IBaseRepository<HistoryItem>
     {
-       // IHistoryItem GetByOperation(long Id);
+       
      }
 
     public interface IOperationRepository : IBaseRepository<Operation>
